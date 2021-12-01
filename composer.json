@@ -42,7 +42,8 @@
         "symfony/yaml": "6.0.*",
         "symfonycasts/verify-email-bundle": "^1.6",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+      "ext-cassandra": "*"
     },
     "require-dev": {
         "symfony/browser-kit": "6.0.*",
