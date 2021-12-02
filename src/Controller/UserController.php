@@ -14,26 +14,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
 
-
-    #[Route('/user', name: 'user')]
-    public function index(): Response
-    {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
+    /**
+     * @param EntityManagerInterface $em
+     * @return mixed
+     */
     #[Route('/users', name: 'user_list')]
-    public function list()
+    public function list(EntityManagerInterface $em): Response
     {
         return $this->render('user/list.html.twig', [
-            'users' => $this->getDoctrine()->getRepository('App:User')->findAll()
+            'users' => $em->getRepository('App:User')->findAll()
         ]);
     }
 
-
+    /**
+     * @param User $user
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @return mixed
+     */
     #[Route('/users/{id}/edit', name: 'user_edit')]
-    public function editAction(User $user,UserPasswordHasherInterface $userPasswordHasher,EntityManagerInterface $em, Request $request)
+    public function editAction(User                        $user,
+                               UserPasswordHasherInterface $userPasswordHasher,
+                               EntityManagerInterface      $em,
+                               Request                     $request
+    )
     {
         $form = $this->createForm(RegistrationFormType::class, $user);
 

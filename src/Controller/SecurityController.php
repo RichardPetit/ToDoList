@@ -11,11 +11,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'login')]
     /**
-     * @Route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    #[Route('/login', name: 'login')]
+     function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -26,10 +27,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/logout", name="app_logout", methods={"GET"})
+     * @return void
      * @throws Exception
      */
+    #[Route('/logout', name: 'app_logout')]
     public function logout(): void
     {
         // controller can be blank: it will never be called!
