@@ -26,7 +26,9 @@ class UserController extends AbstractController
     #[Route('/users', name: 'user_list')]
     public function list()
     {
-        return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('App:User')->findAll()]);
+        return $this->render('user/list.html.twig', [
+            'users' => $this->getDoctrine()->getRepository('App:User')->findAll()
+        ]);
     }
 
 
