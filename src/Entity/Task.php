@@ -36,6 +36,15 @@ class Task
     private ?bool $isDone;
 
     /**
+     * @param $flag
+     * @return void
+     */
+    public function toggle($flag)
+    {
+        $this->isDone = $flag;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
      */
     private ?User $author;
