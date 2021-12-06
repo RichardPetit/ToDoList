@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Task
 {
+    public const ANONYMOUS_AUTHOR = 'Anonyme';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -36,12 +38,12 @@ class Task
     private ?bool $isDone;
 
     /**
-     * @param $flag
+     * @param bool $isDone
      * @return void
      */
-    public function toggle($flag)
+    public function toggle(bool $isDone): void
     {
-        $this->isDone = $flag;
+        $this->isDone = $isDone;
     }
 
     /**
@@ -100,6 +102,10 @@ class Task
 
         return $this;
     }
+     public function isDone(): bool
+     {
+         return $this->getIsDone() === true;
+     }
 
     public function getAuthor(): ?User
     {
@@ -111,6 +117,11 @@ class Task
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getDisplayUsername()
+    {
+        return $this->getAuthor() !== null ? $this->getAuthor()->getUsername() : self::ANONYMOUS_AUTHOR;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
