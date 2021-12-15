@@ -34,7 +34,7 @@ class UserController extends AbstractController
      * @return mixed
      */
     #[Route('/users/{id}/edit', name: 'user_edit')]
-    public function editAction(User                        $user,
+    public function edit(User                        $user,
                                UserPasswordHasherInterface $userPasswordHasher,
                                EntityManagerInterface      $em,
                                Request                     $request
