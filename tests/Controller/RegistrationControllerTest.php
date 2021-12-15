@@ -7,6 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RegistrationControllerTest extends WebTestCase
 {
+    public function setUp(): void
+    {
+        $this->client = static::createClient();
+    }
+
     public function Register()
     {
         $client = static::createClient();
