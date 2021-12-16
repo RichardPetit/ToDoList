@@ -7,18 +7,29 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RegistrationControllerTest extends WebTestCase
 {
+    private $client;
+
     public function setUp(): void
     {
         $this->client = static::createClient();
     }
 
-    public function Register()
+    public function loginUser(): void
     {
+        $crawler = $this->client->request('GET', '/login');
+        $form = $crawler->selectButton('Connexion')->form();
+        $this->client->submit($form, ['email' => 'richard-petit@live.fr', 'password' => 'password']);
+    }
+
+    public function testRegister()
+    {
+        $this->loginUser();
+
         $client = static::createClient();
         $crawler = $client->request('GET', '/register');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
 
-        $form = $crawler->selectButton('Register')->form();
+        $form = $crawler->selectButton('Ajouter')->form();
         $form['user[username]'] = 'NouveauTest';
         $form['user[password]'] = 'password';
         $form['user[email]'] = 'tests@tests.com';
@@ -33,8 +44,8 @@ class RegistrationControllerTest extends WebTestCase
         $this->assertEquals(1, $crawler->filter('div.alert-success')->count());
     }
 
-    public function testRegistration()
-    {
-        $this->assertTrue(true);
-    }
+//    public function testRegistration()
+//    {
+//        $this->assertTrue(true);
+//    }
 }
