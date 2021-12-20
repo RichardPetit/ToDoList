@@ -17,23 +17,22 @@ class RegistrationControllerTest extends WebTestCase
     public function loginUser(): void
     {
         $crawler = $this->client->request('GET', '/login');
-        $form = $crawler->selectButton('Connexion')->form();
-        $this->client->submit($form, ['email' => 'richard-petit@live.fr', 'password' => 'password']);
+        $form = $crawler->selectButton('Me connecter')->form();
+        $this->client->submit($form, ['_username' => 'richard-petit@live.fr', '_password' => 'password']);
     }
 
     public function testRegister()
     {
         $this->loginUser();
 
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/register');
+        $crawler = $this->client->request('GET', '/register');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
 
         $form = $crawler->selectButton('Ajouter')->form();
-        $form['user[username]'] = 'NouveauTest';
-        $form['user[password]'] = 'password';
-        $form['user[email]'] = 'tests@tests.com';
-        $form['user[roles][0]']->tick();
+        $form['registration_form[username]'] = 'NouveauTest';
+        $form['registration_form[plainPassword]'] = 'password';
+        $form['registration_form[email]'] = 'tests@tests.com';
+        $form['registration_form[roles][0]']->tick();
         $this->client->submit($form);
 
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
@@ -41,11 +40,6 @@ class RegistrationControllerTest extends WebTestCase
         $crawler = $this->client->followRedirect();
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertEquals(1, $crawler->filter('div.alert-success')->count());
     }
 
-//    public function testRegistration()
-//    {
-//        $this->assertTrue(true);
-//    }
 }
