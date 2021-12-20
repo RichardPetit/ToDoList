@@ -17,7 +17,7 @@ class TaskControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Me connecter')->form();
-        $this->client->submit($form, ['username' => 'admin', 'password' => 'password']);
+        $this->client->submit($form, ['email' => 'richard-petit@live.fr', 'password' => 'password']);
     }
 
     public function testList()
