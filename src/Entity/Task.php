@@ -20,6 +20,7 @@ class Task
      */
     private $id;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le titre ne peut être vide.")
@@ -65,6 +66,16 @@ class Task
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTitle(): ?string
