@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc508f20-56f7-4d54-ac13-72a1a4631302" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AUTHENTICATION.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CONTRIBUTE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controller/RegistrationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/RegistrationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controller/TaskControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/TaskControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controller/UserControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/UserControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
