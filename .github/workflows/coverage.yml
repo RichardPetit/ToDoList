@@ -16,6 +16,9 @@ jobs:
         options: --name=mysql
         ports:
           - 3309:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_todolist_test_test
     strategy:
       fail-fast: false
       matrix:
@@ -41,19 +44,17 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: |
-          composer config github-oauth.github.com ${{ secrets.REPO_TOKEN }}
           composer install --no-scripts --no-interaction --prefer-dist --optimize-autoloader --no-suggest --ansi
-      - name: prepare db and permissions
+      - name: Run migrations
         run: |
-          docker exec mysql mysql --version
+          mysql -h 127.0.0.1 --port 3309 -u root -proot -e 'CREATE DATABASE IF NOT EXISTS test_todolist_test_test;'
+          bin/console doctrine:schema:create --env=github
       - name: Run Unit Tests
         run: |
-          app/console cache:warmup --env=test --ansi
+          bin/console cache:warmup --env=test --ansi
           mkdir -p build/cov_partials
-          bin/phpunit -d memory_limit=4G -c phpunit.xml.dist --coverage-html build/cov_partials/coverage.html --colors=always
-
-      - name: Upload coverage for oc
-        uses: actions/upload-artifact@v2
-        with:
-          name: oc_coverage
-          path: build/cov_partials/oc.xml
+          bin/phpunit -d memory_limit=4G -c phpunit.xml.dist --coverage-text=tests/coverage.txt --colors=always
+      - name: Send coverage email
+        if: always()
+        run: |
+          bin/console coverage:send-email
