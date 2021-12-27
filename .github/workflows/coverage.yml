@@ -1,0 +1,59 @@
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - '**.yaml'
+      - 'composer.json'
+      - 'composer.lock'
+name: PHP - Check coverage
+jobs:
+  coverage:
+    name: Test & Check coverage
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        options: --name=mysql
+        ports:
+          - 3309:3306
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: [ '8.0' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, ctype, iconv, mysql, apcu, intl, gd, soap
+          ini-values: memory_limit=8G, date.timezone=Europe/Paris
+          coverage: pcov
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install dependencies
+        run: |
+          composer config github-oauth.github.com ${{ secrets.REPO_TOKEN }}
+          composer install --no-scripts --no-interaction --prefer-dist --optimize-autoloader --no-suggest --ansi
+      - name: prepare db and permissions
+        run: |
+          docker exec mysql mysql --version
+      - name: Run Unit Tests
+        run: |
+          app/console cache:warmup --env=test --ansi
+          mkdir -p build/cov_partials
+          bin/phpunit -d memory_limit=4G -c phpunit.xml.dist --coverage-html build/cov_partials/coverage.html --colors=always
+
+      - name: Upload coverage for oc
+        uses: actions/upload-artifact@v2
+        with:
+          name: oc_coverage
+          path: build/cov_partials/oc.xml
