@@ -20,7 +20,7 @@ Composer
 
 #Installation
 
-Cloner le repository Github: https://github.com/RichardPetit/TodoList
+Cloner le repository Github du projet: https://github.com/RichardPetit/TodoList
 
 #Bibliothèques externe
 
