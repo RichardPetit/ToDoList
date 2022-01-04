@@ -3,22 +3,25 @@
 namespace Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Entity\User;
 
 
 class UserControllerTest extends WebTestCase
 {
     private $client;
+    private int $userId;
 
     public function setUp(): void
     {
         $this->client = static::createClient();
+        $this->getUser();
     }
 
     public function loginUser(): void
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Me connecter')->form();
-        $this->client->submit($form, ['_username' => 'richard-petit@live.fr', '_password' => 'password']);
+        $this->client->submit($form, ['_username' => 'admin@admin.fr', '_password' => 'password']);
     }
 
     public function testList(): void
@@ -32,7 +35,7 @@ class UserControllerTest extends WebTestCase
     {
         $this->loginUser();
 
-        $crawler = $this->client->request('GET', '/users/1/edit');
+        $crawler = $this->client->request('GET', '/users/'.$this->userId.'/edit');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
 
         $form = $crawler->selectButton('Modifier')->form();
@@ -47,6 +50,20 @@ class UserControllerTest extends WebTestCase
         $crawler = $this->client->followRedirect();
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * @return void
+     */
+    public function getUser(): void
+    {
+
+        $container = $this->client->getContainer();
+        $manager = $container->get('doctrine')->getManager();
+        $userRepository = $manager->getRepository(User::class);
+        $user = $userRepository->getLastUser();
+
+        $this->userId = $user->getId();
     }
 
 }

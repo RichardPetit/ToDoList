@@ -22,6 +22,8 @@ class TaskRepository extends ServiceEntityRepository
     public function getLastTask()
     {
         return $this->createQueryBuilder('t')
+            ->orderBy("t.id", "DESC")
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
             ;
