@@ -89,14 +89,12 @@ class TaskControllerTest extends WebTestCase
      */
     public function initTask(): void
     {
-        $task = new Task;
-        $task->setTitle('titre');
-        $task->setContent('contenu');
+
         $container = $this->client->getContainer();
-        $doctrine = $container->get('doctrine');
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($task);
-        $entityManager->flush();
+        $manager = $container->get('doctrine')->getManager();
+        $taskRepository = $manager->getRepository(Task::class);
+        $task = $taskRepository->getLastTask();
+        
         $this->taskId = $task->getId();
     }
 

@@ -24,6 +24,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
+
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
@@ -66,6 +68,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return User
+     */
+    public function setId($id): self
+    {
+        $this->id = $id;
+        return $this;
     }
 
     /**
