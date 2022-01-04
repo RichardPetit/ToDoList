@@ -79,9 +79,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param mixed $username
      */
-    public function setUsername(mixed $username): void
+    public function setUsername(mixed $username): self
     {
         $this->username = $username;
+
+        return $this;
     }
 
     public function getEmail(): ?string
