@@ -18,7 +18,7 @@ class RegistrationControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Me connecter')->form();
-        $this->client->submit($form, ['_username' => 'richard-petit@live.fr', '_password' => 'password']);
+        $this->client->submit($form, ['_username' => 'admin@admin.fr', '_password' => 'password']);
     }
 
     public function testRegister()
@@ -33,6 +33,7 @@ class RegistrationControllerTest extends WebTestCase
         $form['registration_form[plainPassword]'] = 'password';
         $form['registration_form[email]'] = 'tests@tests.com';
         $form['registration_form[roles][0]']->tick();
+        $form['registration_form[roles][1]']->tick();
         $this->client->submit($form);
 
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc508f20-56f7-4d54-ac13-72a1a4631302" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
+    <list default="true" id="abad15a5-7fb1-4c0f-b1e5-bba3b5eddc3f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Controller/RegistrationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/RegistrationControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Controller/TaskControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/TaskControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Controller/UserControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/UserControllerTest.php" afterDir="false" />
@@ -17,7 +17,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -131,9 +131,11 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle" />
       <path value="$PROJECT_DIR$/vendor/bin/.phpunit" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
-  <component name="ProjectId" id="21e3bmpOLZvtEaSY92LG43erU5J" />
+  <component name="ProjectId" id="230eveuRyctUJr8CG3Es1JvdB9S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -143,54 +145,28 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
-      <recent name="$PROJECT_DIR$/src/Form" />
-    </key>
-  </component>
-  <component name="RunManager" selected="PHPUnit.RegistrationControllerTest.testRegister">
-    <configuration name="DefaultControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Controller\DefaultControllerTest" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" scope="Class" />
+  <component name="RunManager">
+    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
       <method v="2" />
     </configuration>
-    <configuration name="RegistrationControllerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Controller\RegistrationControllerTest" file="$PROJECT_DIR$/tests/Controller/RegistrationControllerTest.php" method="testRegister" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="PHPUnit.RegistrationControllerTest.testRegister" />
-        <item itemvalue="PHPUnit.DefaultControllerTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fc508f20-56f7-4d54-ac13-72a1a4631302" name="Changes" comment="" />
-      <created>1638287799304</created>
+      <changelist id="abad15a5-7fb1-4c0f-b1e5-bba3b5eddc3f" name="Changes" comment="" />
+      <created>1640875685969</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1638287799304</updated>
-      <workItem from="1638287800544" duration="16736000" />
-      <workItem from="1638437289165" duration="1875000" />
-      <workItem from="1638458450065" duration="15662000" />
-      <workItem from="1638801451690" duration="6554000" />
-      <workItem from="1638810133242" duration="8485000" />
-      <workItem from="1639059331649" duration="747000" />
-      <workItem from="1639396383209" duration="11584000" />
+      <updated>1640875685969</updated>
+      <workItem from="1640875689815" duration="8750000" />
     </task>
     <servers />
   </component>
