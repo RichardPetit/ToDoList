@@ -52,7 +52,7 @@ jobs:
       - name: Run Unit Tests
         run: |
           bin/console cache:warmup --env=test --ansi
-          bin/console doctrine:fixtures:load --no-interaction
+          bin/console doctrine:fixtures:load --no-interaction --env=test
           mkdir -p build/cov_partials
           bin/phpunit -d memory_limit=4G -c phpunit.xml.dist --coverage-text=tests/coverage.txt --colors=always
       - name: Send coverage email
