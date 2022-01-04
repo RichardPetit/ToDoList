@@ -11,12 +11,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Task
 {
+    public const ANONYMOUS_AUTHOR = 'Anonyme';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -34,6 +37,15 @@ class Task
      * @ORM\Column(type="boolean")
      */
     private ?bool $isDone;
+
+    /**
+     * @param bool $isDone
+     * @return void
+     */
+    public function toggle(bool $isDone): void
+    {
+        $this->isDone = $isDone;
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
@@ -54,6 +66,16 @@ class Task
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTitle(): ?string
@@ -91,6 +113,10 @@ class Task
 
         return $this;
     }
+     public function isDone(): bool
+     {
+         return $this->getIsDone() === true;
+     }
 
     public function getAuthor(): ?User
     {
@@ -102,6 +128,11 @@ class Task
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getDisplayUsername()
+    {
+        return $this->getAuthor() !== null ? $this->getAuthor()->getUsername() : self::ANONYMOUS_AUTHOR;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable

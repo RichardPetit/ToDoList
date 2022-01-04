@@ -24,6 +24,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
+
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
@@ -69,6 +71,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @param mixed $id
+     * @return User
+     */
+    public function setId($id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getUsername(): mixed
@@ -79,9 +91,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param mixed $username
      */
-    public function setUsername(mixed $username): void
+    public function setUsername(mixed $username): self
     {
         $this->username = $username;
+
+        return $this;
     }
 
     public function getEmail(): ?string
