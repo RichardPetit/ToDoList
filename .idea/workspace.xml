@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abad15a5-7fb1-4c0f-b1e5-bba3b5eddc3f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/task/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/task/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task/list.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1640875685969</updated>
       <workItem from="1640875689815" duration="8750000" />
-      <workItem from="1641999996491" duration="14532000" />
+      <workItem from="1641999996491" duration="24739000" />
     </task>
     <servers />
   </component>
