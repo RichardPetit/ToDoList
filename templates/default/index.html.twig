@@ -13,8 +13,8 @@
         <a href="{{ path('task_list') }}" class="btn btn-info">Consulter la liste des tâches à faire</a>
 
         {% if (is_granted('ROLE_ADMIN')) %}
-            <a href="{{ path('app_register') }}" class="btn btn-warning">Créer un utilisateur</a>
             <a href="{{ path('user_list') }}" class="btn btn-primary">Liste des utilisateurs</a>
+            <a href="{{ path('app_register') }}" class="btn btn-warning">Créer un utilisateur</a>
 
         {% endif %}
     </div>
